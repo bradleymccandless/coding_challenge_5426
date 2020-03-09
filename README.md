@@ -31,3 +31,17 @@ Add a new movie with {"screen": N} where N is the screening room ID as an interg
 Sell tickets to the {"movie": N} where N is the movie ID as an integer.
 ###### POST
 Purchase a ticket to the {"movie": N} where N is the movie ID as an integer. Optionally buy more than one ticket {"movie": N, "amount": M} where M is an integer from 1 to (the number of free tickets remaining). 
+# Run
+```bash
+python3 manage.py migrate
+python3 manage.py test
+python3 manage.py runserver
+curl -X POST -H "ContentType: application/json" -d '{"seats":996}' http://localhost:8000/api/screens
+curl -X POST -H "ContentType: application/json" -d '{"screen":1}' http://localhost:8000/api/movies
+curl -X POST -H "ContentType: application/json" -d '{"screen":1, "showtime": "11:22"}' http://localhost:8000/api/movies
+curl -X PUT -H "ContentType: application/json" -d '{"movie":1}' http://localhost:8000/api/tickets
+curl -X PUT -H "ContentType: application/json" -d '{"movie":2}' http://localhost:8000/api/tickets
+curl -X POST -H "ContentType: application/json" -d '{"movie":1}' http://localhost:8000/api/tickets
+curl -X POST -H "ContentType: application/json" -d '{"movie":2, "amount": 996}' http://localhost:8000/api/tickets
+```
+Then view /api/screens and /api/movies in Firefox.
