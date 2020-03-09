@@ -49,10 +49,11 @@ def movies(request):
             return JsonResponse({'message': 'Screen '+str(data['screen'])+' does not exist.'}, status=400)
         if 'showtime' not in data:
             data['showtime'] = datetime.datetime.now().time().replace(second=0, microsecond=0)
-        try:
-            datetime.datetime.strptime(data['showtime'], '%H:%M')
-        except:
-            return JsonResponse({'message': 'Showtime must be HH:MM.'}, status=400)
+        else:
+            try:
+                datetime.datetime.strptime(data['showtime'], '%H:%M')
+            except:
+                return JsonResponse({'message': 'Showtime must be HH:MM.'}, status=400)
         movie_object = Movie.objects.create(screen=Screen.objects.get(id=data['screen']),showtime=data['showtime'])
         return JsonResponse({'message': 'Movie '+str(movie_object.id)+' added.'})
     else:
