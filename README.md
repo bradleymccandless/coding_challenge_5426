@@ -2,6 +2,7 @@ Let's say we have a movie theatre. The movie theatre can have the following thin
 - Rooms with a designated capacity (number of seats)
 - Movies that are playing at a set time every day
 - Tickets that are sold to customers
+
 The API should be able to do the following
 - Set up rooms
 - Set up movie showtimes
