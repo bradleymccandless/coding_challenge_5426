@@ -36,6 +36,8 @@ Purchase a ticket to the {"movie": N} where N is the movie ID as an integer. Opt
 python3 manage.py migrate
 python3 manage.py test
 python3 manage.py runserver
+```
+```bash
 curl -X POST -H "ContentType: application/json" -d '{"seats":996}' http://localhost:8000/api/screens
 curl -X POST -H "ContentType: application/json" -d '{"screen":1}' http://localhost:8000/api/movies
 curl -X POST -H "ContentType: application/json" -d '{"screen":1, "showtime": "11:22"}' http://localhost:8000/api/movies
